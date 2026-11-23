@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en-IE">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="theme-color" content="#1d6b58">
+<link rel="apple-touch-icon" href="data:image/png;base64,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">
+<meta name="apple-mobile-web-app-title" content="Stash">
+<title>My Stash</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+/* Layout: one narrow phone column, summary card first, bottom tab bar for Piles / Owed / Convert. */
+:root{
+  --bg:#f3f5f2; --surface:#ffffff; --ink:#18211e; --muted:#63706b; --line:#dfe5e1;
+  --accent:#1d6b58; --accent-ink:#ffffff; --soft:#e7efeb; --pos:#1d7a4e; --neg:#b3402b;
+  --font:'Manrope',system-ui,-apple-system,'Segoe UI',Roboto,sans-serif;
+  color-scheme:light;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --bg:#0f1512; --surface:#171e1b; --ink:#e9efec; --muted:#92a19a; --line:#26302c;
+    --accent:#4fbf9c; --accent-ink:#0b1a15; --soft:#1e2824; --pos:#5fd093; --neg:#ee8a74;
+    color-scheme:dark;
+  }
+}
+:root[data-theme="dark"]{
+  --bg:#0f1512; --surface:#171e1b; --ink:#e9efec; --muted:#92a19a; --line:#26302c;
+  --accent:#4fbf9c; --accent-ink:#0b1a15; --soft:#1e2824; --pos:#5fd093; --neg:#ee8a74;
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font-family:var(--font);font-size:16px;line-height:1.4;-webkit-text-size-adjust:100%;font-variant-numeric:tabular-nums}
+main{max-width:520px;margin:0 auto;padding:max(16px,env(safe-area-inset-top)) 16px calc(96px + env(safe-area-inset-bottom))}
+h1,h2,h3,h4,p{margin:0}
+button{font:inherit;color:inherit;cursor:pointer}
+button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{display:flex;align-items:baseline;justify-content:space-between;padding:4px 2px 14px}
+.top h1{font-size:20px;font-weight:700;letter-spacing:-.01em}
+.top .rate{font-size:12px;color:var(--muted)}
+.hero{background:var(--accent);color:var(--accent-ink);border-radius:18px;padding:18px 18px 16px;margin-bottom:14px}
+.hero .eyebrow{font-size:13px;font-weight:600;opacity:.85}
+.hero .big{font-size:38px;font-weight:700;letter-spacing:-.02em;line-height:1.15;margin-top:2px}
+.hero .sub{font-size:14px;opacity:.85;margin-top:2px}
+.piles{display:flex;flex-direction:column;gap:12px;margin-bottom:12px}
+.pile,.card,.loan{background:var(--surface);border:1px solid var(--line);border-radius:16px;padding:14px 16px}
+.row{display:flex;align-items:flex-start;justify-content:space-between;gap:12px}
+.pile h3,.card h2{font-size:15px;font-weight:700}
+.amt{font-size:28px;font-weight:700;letter-spacing:-.02em;margin-top:4px}
+.sub{font-size:13px;color:var(--muted)}
+.hero .sub{color:inherit}
+.btns{display:flex;gap:10px;margin-top:12px}
+.btn{flex:1;min-height:48px;border-radius:12px;border:1px solid transparent;font-weight:600;padding:0 14px}
+.btn.add{background:var(--accent);color:var(--accent-ink)}
+.btn.take{background:var(--soft);color:var(--ink);border-color:var(--line)}
+.btn.ghost{background:transparent;border-color:var(--line);color:var(--ink)}
+.btn.danger{background:transparent;border-color:var(--neg);color:var(--neg)}
+.btn.wide{width:100%;flex:none}
+.btn:disabled{opacity:.55;cursor:default}
+.link{background:none;border:0;padding:4px 0;color:var(--accent);font-weight:600;font-size:14px}
+h2.sect{font-size:13px;font-weight:700;color:var(--muted);text-transform:none;margin:22px 2px 8px}
+.chips{display:flex;gap:8px;overflow-x:auto;padding:0 0 10px;margin:0 -16px;padding-left:16px;padding-right:16px}
+.chip{flex:none;border:1px solid var(--line);background:var(--surface);border-radius:999px;padding:7px 14px;font-size:14px;font-weight:600;min-height:36px}
+.chip[aria-pressed="true"]{background:var(--accent);color:var(--accent-ink);border-color:var(--accent)}
+ul{list-style:none;margin:0;padding:0}
+.entry{position:relative;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:12px 14px;margin-bottom:8px;display:grid;grid-template-columns:1fr auto;gap:2px 12px}
+.e-main{display:flex;align-items:baseline;gap:10px;flex-wrap:wrap}
+.e-amt{font-weight:700;font-size:17px}
+.e-amt.pos{color:var(--pos)} .e-amt.neg{color:var(--neg)}
+.e-mkd,.e-meta,.e-note{font-size:13px;color:var(--muted)}
+.e-note{color:var(--ink);opacity:.85;grid-column:1/-1;word-break:break-word}
+.e-meta{grid-column:1}
+.x{grid-column:2;grid-row:1/3;align-self:center;background:none;border:0;color:var(--muted);font-size:13px;font-weight:600;padding:8px 0 8px 8px;min-height:44px}
+.x.fix{opacity:.7;cursor:default}
+.more{margin-top:4px}
+.empty{color:var(--muted);font-size:14px;padding:10px 2px}
+.person{display:flex;justify-content:space-between;align-items:baseline;margin:20px 2px 8px}
+.person h3{font-size:16px;font-weight:700}
+.person span{font-weight:700}
+.loan{margin-bottom:10px}
+.l-amt{font-size:22px;font-weight:700;letter-spacing:-.01em}
+.l-of{font-size:13px;font-weight:500;color:var(--muted)}
+.l-date{font-size:12px;color:var(--muted);text-align:right;white-space:nowrap}
+.bar{height:6px;border-radius:99px;background:var(--soft);margin:10px 0 4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--accent);border-radius:99px}
+.reps{margin-top:6px}
+.reps li{display:flex;justify-content:space-between;align-items:center;font-size:13px;color:var(--muted);border-top:1px solid var(--line);padding:2px 0}
+.pill{display:inline-block;font-size:12px;font-weight:700;background:var(--soft);color:var(--accent);border-radius:99px;padding:2px 10px;margin-left:6px;vertical-align:middle}
+label{display:block;font-size:13px;font-weight:600;color:var(--muted);margin:14px 0 6px}
+.field{display:flex;align-items:center;gap:8px;background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:0 14px;min-height:50px}
+.field span{color:var(--muted);font-weight:600}
+.field input,input.plain,select{width:100%;border:0;background:transparent;color:var(--ink);font:inherit;font-size:17px;min-height:48px;outline-offset:6px}
+input.plain,select{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:0 14px}
+textarea{width:100%;min-height:150px;background:var(--bg);color:var(--ink);border:1px solid var(--line);border-radius:12px;padding:10px;font:12px/1.4 ui-monospace,Menlo,monospace}
+.hint{font-size:13px;color:var(--muted);margin-top:8px}
+.err{color:var(--neg);font-size:14px;font-weight:600;min-height:20px;margin-top:10px}
+.center{text-align:center;padding:40px 0}
+.tabs{position:fixed;left:0;right:0;bottom:0;display:flex;background:var(--surface);border-top:1px solid var(--line);padding:6px 8px calc(6px + env(safe-area-inset-bottom));z-index:5}
+.tabs button{flex:1;border:0;background:none;min-height:50px;border-radius:12px;font-weight:600;font-size:14px;color:var(--muted)}
+.tabs button[aria-selected="true"]{color:var(--accent);background:var(--soft)}
+#sheet[hidden]{display:none}
+.scrim{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:10}
+.sheet{position:fixed;left:0;right:0;bottom:0;z-index:11;max-width:520px;margin:0 auto;background:var(--surface);border-radius:20px 20px 0 0;padding:18px 18px calc(18px + env(safe-area-inset-bottom));max-height:92%;overflow-y:auto;box-shadow:0 -8px 30px rgba(0,0,0,.2)}
+.sheet h2{font-size:19px;font-weight:700}
+#toast{position:fixed;left:50%;bottom:calc(84px + env(safe-area-inset-bottom));transform:translateX(-50%);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:99px;font-size:14px;font-weight:600;z-index:20;opacity:0;pointer-events:none;transition:opacity .2s}
+#toast.on{opacity:1}
+@media (prefers-reduced-motion:reduce){#toast{transition:none}}
+</style>
+</head>
+<body>
+<main>
+  <header class="top"><h1>My Stash</h1><span class="rate" id="rateNote"></span></header>
+  <div id="view"></div>
+</main>
+<nav class="tabs" role="tablist" aria-label="Sections">
+  <button role="tab" id="t-piles" data-a="tab" data-tab="piles">Piles</button>
+  <button role="tab" id="t-owed" data-a="tab" data-tab="owed">Owed</button>
+  <button role="tab" id="t-convert" data-a="tab" data-tab="convert">Convert</button>
+</nav>
+<div id="sheet" hidden></div>
+<div id="toast" role="status" aria-live="polite"></div>
+
+<script>
+(function(){
+'use strict';
+var DEFAULT_RATE = 61.5;
+var DEFAULT_PILES = [{id:'p1',name:'Main'},{id:'p2',name:'Savings'},{id:'p3',name:'Spare'}];
+
+var S = {
+  uid:null, dl:null, appRef:null, txRef:null, loanRef:null,
+  piles:DEFAULT_PILES.slice(), rate:DEFAULT_RATE, metaExists:false,
+  tx:[], loans:[], got:{meta:false,tx:false,loans:false},
+  tab:'piles', filter:'all', histLimit:50, showSettled:false,
+  conv:{side:'eur',val:''}, unavailable:false, slow:false, cur:null, confirmFn:null
+};
+
+/* ---------- helpers ---------- */
+function esc(s){return String(s==null?'':s).replace(/[&<>"']/g,function(c){return {'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c];});}
+var eurFmt = new Intl.NumberFormat('en-IE',{style:'currency',currency:'EUR'});
+var mkdFmt = new Intl.NumberFormat('en-IE',{maximumFractionDigits:0});
+function fmtE(c){return eurFmt.format(c/100);}
+function fmtM(c){return '≈ '+mkdFmt.format(Math.round(c/100*S.rate))+' ден';}
+function fmtDate(ts){return new Date(ts).toLocaleString('en-IE',{day:'numeric',month:'short',year:'numeric',hour:'2-digit',minute:'2-digit'});}
+function localInput(ts){ts=ts||Date.now();var d=new Date(ts-new Date(ts).getTimezoneOffset()*60000);return d.toISOString().slice(0,16);}
+function fromInput(v){var t=new Date(v).getTime();return isNaN(t)?Date.now():t;}
+function uid(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
+function $(id){return document.getElementById(id);}
+function val(id){var e=$(id);return e?e.value:'';}
+function parseNum(s){
+  s=String(s).trim().replace(/[\s€]|ден/g,'');
+  if(!s)return null;
+  if(s.indexOf(',')>-1&&s.indexOf('.')>-1){s=s.replace(/,/g,'');}
+  else if(s.indexOf(',')>-1){s=/^\d+,\d{1,4}$/.test(s)?s.replace(',','.'):s.replace(/,/g,'');}
+  if(!/^(\d+\.?\d*|\.\d+)$/.test(s))return null;
+  var n=parseFloat(s);return isFinite(n)?n:null;
+}
+function readCents(id){var n=parseNum(val(id));if(n==null||n>1e7)return null;var c=Math.round(n*100);return c>0?c:null;}
+function pile(id){for(var i=0;i<S.piles.length;i++)if(S.piles[i].id===id)return S.piles[i];return null;}
+function pileName(id){var p=pile(id);return p?p.name:'Removed pile';}
+function bal(id){return S.tx.reduce(function(a,t){return t.pile===id?a+t.cents:a;},0);}
+function total(){return S.piles.reduce(function(a,p){return a+bal(p.id);},0);}
+function loan(id){for(var i=0;i<S.loans.length;i++)if(S.loans[i].id===id)return S.loans[i];return null;}
+function remaining(l){return l.cents-(l.repayments||[]).reduce(function(a,r){return a+r.cents;},0);}
+function ready(){return S.got.meta&&S.got.tx&&S.got.loans;}
+
+/* ---------- storage ---------- */
+async function saveMeta(patch){
+  if(S.metaExists){await S.appRef.update(patch);}
+  else{await S.appRef.set(Object.assign({piles:S.piles,rate:S.rate,v:1},patch));}
+  S.metaExists=true;
+}
+async function ensureMeta(){if(!S.metaExists)await saveMeta({});}
+
+/* ---------- views ---------- */
+function viewPiles(){
+  var t=total();
+  var h='<section class="hero"><p class="eyebrow">In all piles</p><p class="big">'+fmtE(t)+'</p><p class="sub">'+fmtM(t)+'</p></section>';
+  h+='<div class="piles">'+S.piles.map(function(p){
+    var b=bal(p.id);
+    return '<article class="pile"><div class="row"><h3>'+esc(p.name)+'</h3><button class="link" data-a="editPile" data-id="'+p.id+'">Edit</button></div>'+
+      '<p class="amt">'+fmtE(b)+'</p><p class="sub">'+fmtM(b)+'</p>'+
+      '<div class="btns"><button class="btn add" data-a="move" data-id="'+p.id+'" data-dir="1">Add</button>'+
+      '<button class="btn take" data-a="move" data-id="'+p.id+'" data-dir="-1">Take</button></div></article>';
+  }).join('')+'</div>';
+  h+='<button class="btn ghost wide" data-a="newPile">New pile</button>';
+  h+='<h2 class="sect">History</h2>';
+  h+='<div class="chips"><button class="chip" data-a="filter" data-f="all" aria-pressed="'+(S.filter==='all')+'">All</button>'+
+    S.piles.map(function(p){return '<button class="chip" data-a="filter" data-f="'+p.id+'" aria-pressed="'+(S.filter===p.id)+'">'+esc(p.name)+'</button>';}).join('')+'</div>';
+  var rows=S.tx.filter(function(t){return S.filter==='all'||t.pile===S.filter;}).sort(function(a,b){return b.ts-a.ts||(a.id<b.id?1:-1);});
+  if(!rows.length){h+='<p class="empty">No entries yet. Use Add or Take on a pile.</p>';}
+  else{
+    h+='<ul>'+rows.slice(0,S.histLimit).map(function(t){
+      var pos=t.cents>0;
+      return '<li class="entry"><div class="e-main"><span class="e-amt '+(pos?'pos':'neg')+'">'+(pos?'+':'−')+fmtE(Math.abs(t.cents))+'</span><span class="e-mkd">'+fmtM(Math.abs(t.cents))+'</span></div>'+
+        '<div class="e-meta">'+esc(pileName(t.pile))+' · '+fmtDate(t.ts)+'</div>'+
+        (t.note?'<div class="e-note">'+esc(t.note)+'</div>':'')+
+        (t.loanId?'<span class="x fix">Loan</span>':'<button class="x" data-a="delTx" data-id="'+t.id+'" aria-label="Delete this entry">Delete</button>')+'</li>';
+    }).join('')+'</ul>';
+    if(rows.length>S.histLimit)h+='<button class="btn ghost wide more" data-a="more">Show more</button>';
+  }
+  return h;
+}
+
+function loanCard(l,showName){
+  var rem=remaining(l),paid=l.cents-rem,pct=Math.max(0,Math.min(100,Math.round(paid/l.cents*100)));
+  var reps=(l.repayments||[]).slice().sort(function(a,b){return a.ts-b.ts;}).map(function(r){
+    return '<li><span>Repaid '+fmtE(r.cents)+' · '+fmtDate(r.ts)+'</span><button class="x" style="grid-row:auto" data-a="delRep" data-id="'+l.id+'" data-rid="'+r.id+'" aria-label="Remove this repayment">Remove</button></li>';
+  }).join('');
+  var settled=rem<=0;
+  return '<article class="loan">'+
+    (showName?'<h4>'+esc(l.person)+'</h4>':'')+
+    '<div class="row"><div><p class="l-amt">'+(settled?fmtE(l.cents)+'<span class="pill">Settled</span>':fmtE(rem)+' <span class="l-of">of '+fmtE(l.cents)+'</span>')+'</p><p class="sub">'+fmtM(settled?l.cents:rem)+'</p></div><div class="l-date">'+fmtDate(l.ts)+'</div></div>'+
+    (l.note?'<p class="e-note" style="margin-top:6px">'+esc(l.note)+'</p>':'')+
+    '<div class="bar"><i style="width:'+pct+'%"></i></div>'+
+    (reps?'<ul class="reps">'+reps+'</ul>':'')+
+    '<div class="btns">'+(settled?'':'<button class="btn add" data-a="repay" data-id="'+l.id+'">Record repayment</button>')+
+    '<button class="btn ghost" data-a="delLoan" data-id="'+l.id+'">Delete</button></div></article>';
+}
+
+function viewOwed(){
+  var open=S.loans.filter(function(l){return remaining(l)>0;});
+  var settled=S.loans.filter(function(l){return remaining(l)<=0;}).sort(function(a,b){return b.ts-a.ts;});
+  var owed=open.reduce(function(a,l){return a+remaining(l);},0);
+  var h='<section class="hero"><p class="eyebrow">Owed to you</p><p class="big">'+fmtE(owed)+'</p><p class="sub">'+fmtM(owed)+'</p></section>';
+  h+='<button class="btn add wide" data-a="lend">Lend money</button>';
+  var map={},order=[];
+  open.slice().sort(function(a,b){return a.ts-b.ts;}).forEach(function(l){
+    var k=l.person.trim().toLowerCase();
+    if(!map[k]){map[k]={name:l.person.trim(),loans:[]};order.push(k);}
+    map[k].loans.push(l);
+  });
+  if(!order.length){h+='<p class="empty">Nobody owes you anything right now.</p>';}
+  order.forEach(function(k){
+    var g=map[k],sum=g.loans.reduce(function(a,l){return a+remaining(l);},0);
+    h+='<div class="person"><h3>'+esc(g.name)+'</h3><span>'+fmtE(sum)+'</span></div>';
+    h+=g.loans.map(function(l){return loanCard(l,false);}).join('');
+  });
+  if(settled.length){
+    h+='<button class="btn ghost wide" style="margin-top:14px" data-a="toggleSettled">'+(S.showSettled?'Hide':'Show')+' settled ('+settled.length+')</button>';
+    if(S.showSettled)h+='<div style="margin-top:12px">'+settled.map(function(l){return loanCard(l,true);}).join('')+'</div>';
+  }
+  return h;
+}
+
+function convOther(){
+  var n=parseNum(S.conv.val);
+  if(n==null)return '';
+  return S.conv.side==='eur'?(n*S.rate).toFixed(2):(n/S.rate).toFixed(2);
+}
+function viewConvert(){
+  var eur=S.conv.side==='eur'?S.conv.val:convOther();
+  var mkd=S.conv.side==='mkd'?S.conv.val:convOther();
+  return '<section class="card"><h2>Converter</h2>'+
+    '<label for="cEur">Euro</label><div class="field"><span>€</span><input id="cEur" inputmode="decimal" autocomplete="off" value="'+esc(eur)+'"></div>'+
+    '<label for="cMkd">Denars</label><div class="field"><span>ден</span><input id="cMkd" inputmode="decimal" autocomplete="off" value="'+esc(mkd)+'"></div>'+
+    '<label for="cRate">Rate: denars for 1 euro</label><div class="field"><span>ден</span><input id="cRate" inputmode="decimal" autocomplete="off" value="'+esc(S.rate)+'"></div>'+
+    '<button class="link" data-a="resetRate">Reset to '+DEFAULT_RATE.toFixed(2)+'</button>'+
+    '<p class="hint">Every ≈ ден amount in the app uses this rate. Change it whenever the rate moves.</p></section>'+
+    '<section class="card" style="margin-top:12px"><h2>Export</h2><p class="hint">Get all pile entries, loans and repayments as a spreadsheet file.</p>'+
+    '<button class="btn ghost wide" style="margin-top:12px" data-a="export">Export history</button></section>';
+}
+
+function render(){
+  var v=$('view');
+  ['piles','owed','convert'].forEach(function(t){var b=$('t-'+t);b.setAttribute('aria-selected',String(S.tab===t));});
+  $('rateNote').textContent=ready()?('1 € = '+S.rate+' ден'):'';
+  if(S.unavailable){v.innerHTML='<section class="card"><h2>Storage is blocked</h2><p class="hint">This browser will not let the page save data on your phone. Turn off Private Browsing, then reload the page.</p></section>';return;}
+  if(!ready()){v.innerHTML=S.slow?'<section class="card"><h2>Still connecting</h2><p class="hint">Your saved data has not loaded yet. Keep this page open and it will appear once you are online.</p></section>':'<p class="hint center">Loading…</p>';return;}
+  v.innerHTML=S.tab==='piles'?viewPiles():S.tab==='owed'?viewOwed():viewConvert();
+}
+
+/* ---------- sheets ---------- */
+function openSheet(html,focusId){
+  var s=$('sheet');
+  s.innerHTML='<div class="scrim" data-a="closeSheet"></div><div class="sheet" role="dialog" aria-modal="true">'+html+'</div>';
+  s.hidden=false;
+  if(focusId)setTimeout(function(){var e=$(focusId);if(e)e.focus();},50);
+}
+function closeSheet(){var s=$('sheet');s.hidden=true;s.innerHTML='';S.cur=null;S.confirmFn=null;}
+function err(msg){var e=$('sErr');if(e)e.textContent=msg;}
+var toastT;
+function toast(msg){var t=$('toast');t.textContent=msg;t.classList.add('on');clearTimeout(toastT);toastT=setTimeout(function(){t.classList.remove('on');},2200);}
+async function save(fn){
+  var btns=[].slice.call(document.querySelectorAll('#sheet .btn'));
+  btns.forEach(function(b){b.disabled=true;});
+  var primary=document.querySelector('#sheet [data-primary]');var old=primary?primary.textContent:'';
+  if(primary)primary.textContent='Saving…';
+  try{await fn();closeSheet();toast('Saved');}
+  catch(e){btns.forEach(function(b){b.disabled=false;});if(primary)primary.textContent=old;err('Could not save. Check your connection and try again.');}
+}
+function confirmSheet(title,body,yes,fn){
+  S.confirmFn=fn;
+  openSheet('<h2>'+esc(title)+'</h2><p class="hint" style="font-size:15px;margin-top:10px">'+esc(body)+'</p><p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Cancel</button><button class="btn danger" data-a="confirmYes" data-primary>'+esc(yes)+'</button></div>');
+}
+function pileOptions(selected,noneLabel){
+  return S.piles.map(function(p){return '<option value="'+p.id+'"'+(p.id===selected?' selected':'')+'>'+esc(p.name)+' ('+fmtE(bal(p.id))+')</option>';}).join('')+
+    '<option value=""'+(selected===''?' selected':'')+'>'+esc(noneLabel)+'</option>';
+}
+
+function sheetMove(pileId,dir){
+  var p=pile(pileId);S.cur={type:'move',pileId:pileId,dir:dir};
+  openSheet('<h2>'+(dir>0?'Add to ':'Take from ')+esc(p.name)+'</h2><p class="hint">Now '+fmtE(bal(p.id))+'</p>'+
+    '<label for="fAmt">Amount in euro</label><div class="field"><span>€</span><input id="fAmt" inputmode="decimal" autocomplete="off" placeholder="0.00"></div><p class="sub" id="fMkd" style="margin-top:6px">&nbsp;</p>'+
+    '<label for="fNote">Note (optional)</label><input id="fNote" class="plain" maxlength="80" autocomplete="off">'+
+    '<label for="fWhen">When</label><input id="fWhen" class="plain" type="datetime-local" value="'+localInput()+'">'+
+    '<p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Cancel</button><button class="btn '+(dir>0?'add':'take')+'" data-a="saveMove" data-primary>'+(dir>0?'Add':'Take')+'</button></div>','fAmt');
+}
+async function saveMove(){
+  var c=S.cur,cents=readCents('fAmt');
+  if(!cents)return err('Enter an amount above 0.');
+  var p=pile(c.pileId);
+  if(c.dir<0&&cents>bal(p.id))return err('Only '+fmtE(bal(p.id))+' in '+p.name+'.');
+  var note=val('fNote').trim(),ts=fromInput(val('fWhen'));
+  await save(async function(){await ensureMeta();await S.txRef.add({pile:p.id,cents:c.dir*cents,note:note,ts:ts});});
+}
+
+function sheetLend(){
+  S.cur={type:'lend'};
+  var best=S.piles.slice().sort(function(a,b){return bal(b.id)-bal(a.id);})[0];
+  var names={};S.loans.forEach(function(l){names[l.person.trim()]=1;});
+  openSheet('<h2>Lend money</h2>'+
+    '<label for="lWho">Who is borrowing</label><input id="lWho" class="plain" list="people" maxlength="40" autocomplete="off"><datalist id="people">'+Object.keys(names).map(function(n){return '<option value="'+esc(n)+'">';}).join('')+'</datalist>'+
+    '<label for="lAmt">Amount in euro</label><div class="field"><span>€</span><input id="lAmt" inputmode="decimal" autocomplete="off" placeholder="0.00"></div><p class="sub" id="lMkd" style="margin-top:6px">&nbsp;</p>'+
+    '<label for="lPile">Take from pile</label><select id="lPile">'+pileOptions(best?best.id:'', "Don't take from a pile")+'</select>'+
+    '<label for="lNote">Note (optional)</label><input id="lNote" class="plain" maxlength="80" autocomplete="off">'+
+    '<label for="lWhen">When</label><input id="lWhen" class="plain" type="datetime-local" value="'+localInput()+'">'+
+    '<p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Cancel</button><button class="btn add" data-a="saveLend" data-primary>Lend</button></div>','lWho');
+}
+async function saveLend(){
+  var person=val('lWho').trim(),cents=readCents('lAmt'),pid=val('lPile'),note=val('lNote').trim(),ts=fromInput(val('lWhen'));
+  if(!person)return err('Enter who is borrowing.');
+  if(!cents)return err('Enter an amount above 0.');
+  if(pid&&cents>bal(pid))return err('Only '+fmtE(bal(pid))+' in '+pileName(pid)+'. Pick another pile or choose not to take it from a pile.');
+  await save(async function(){
+    await ensureMeta();
+    var ref=S.loanRef.doc();
+    await ref.set({person:person,cents:cents,note:note,ts:ts,pile:pid||null,repayments:[]});
+    if(pid)await S.txRef.add({pile:pid,cents:-cents,note:'Lent to '+person+(note?' · '+note:''),ts:ts,loanId:ref.id});
+  });
+}
+
+function sheetRepay(id){
+  var l=loan(id),rem=remaining(l);S.cur={type:'repay',id:id};
+  var sel=(l.pile&&pile(l.pile))?l.pile:(S.piles[0]?S.piles[0].id:'');
+  openSheet('<h2>Repayment from '+esc(l.person)+'</h2><p class="hint">Still owed '+fmtE(rem)+'</p>'+
+    '<label for="rAmt">Amount in euro</label><div class="field"><span>€</span><input id="rAmt" inputmode="decimal" autocomplete="off" value="'+(rem/100).toFixed(2)+'"></div><p class="sub" id="rMkd" style="margin-top:6px">'+fmtM(rem)+'</p>'+
+    '<label for="rPile">Add to pile</label><select id="rPile">'+pileOptions(sel,"Don't add to a pile")+'</select>'+
+    '<label for="rWhen">When</label><input id="rWhen" class="plain" type="datetime-local" value="'+localInput()+'">'+
+    '<p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Cancel</button><button class="btn add" data-a="saveRepay" data-primary>Record</button></div>','rAmt');
+}
+async function saveRepay(){
+  var l=loan(S.cur.id),rem=remaining(l),cents=readCents('rAmt'),pid=val('rPile'),ts=fromInput(val('rWhen'));
+  if(!cents)return err('Enter an amount above 0.');
+  if(cents>rem)return err('Only '+fmtE(rem)+' is still owed.');
+  await save(async function(){
+    var rep={id:uid(),cents:cents,ts:ts,pile:pid||null};
+    await S.loanRef.doc(l.id).update({repayments:(l.repayments||[]).concat([rep])});
+    if(pid)await S.txRef.add({pile:pid,cents:cents,note:'Repayment from '+l.person,ts:ts,loanId:l.id,repId:rep.id});
+  });
+}
+
+function sheetPile(id){
+  var p=id?pile(id):null;S.cur={type:'pile',id:id||null};
+  openSheet('<h2>'+(p?'Edit pile':'New pile')+'</h2>'+
+    '<label for="pName">Name</label><input id="pName" class="plain" maxlength="24" autocomplete="off" value="'+esc(p?p.name:'')+'">'+
+    '<p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Cancel</button><button class="btn add" data-a="savePile" data-primary>Save</button></div>'+
+    (p&&S.piles.length>1?'<div class="btns"><button class="btn danger" data-a="removePile">Remove this pile</button></div>':''),'pName');
+}
+async function savePile(){
+  var name=val('pName').trim();
+  if(!name)return err('Enter a name.');
+  var next=S.cur.id?S.piles.map(function(p){return p.id===S.cur.id?{id:p.id,name:name}:p;}):S.piles.concat([{id:'p'+uid(),name:name}]);
+  await save(function(){return saveMeta({piles:next});});
+}
+function removePile(){
+  var id=S.cur.id,p=pile(id),n=S.tx.filter(function(t){return t.pile===id;}).length;
+  confirmSheet('Remove '+p.name+'?','Its '+n+' entr'+(n===1?'y':'ies')+' and its balance of '+fmtE(bal(id))+' are deleted with it. This cannot be undone.','Remove pile',async function(){
+    var list=S.tx.filter(function(t){return t.pile===id;});
+    for(var i=0;i<list.length;i++)await S.txRef.doc(list[i].id).delete();
+    await saveMeta({piles:S.piles.filter(function(q){return q.id!==id;})});
+    if(S.filter===id)S.filter='all';
+  });
+}
+
+function csvText(){
+  function n(v){return '"'+String(v==null?'':v).replace(/"/g,'""')+'"';}
+  function t(v){v=String(v==null?'':v);return n(/^[=+\-@]/.test(v)?"'"+v:v);}
+  function d(ts){return localInput(ts).replace('T',' ');}
+  var rows=[['type','date','pile','person','amount_eur','note'].map(n).join(',')];
+  S.tx.slice().sort(function(a,b){return a.ts-b.ts;}).forEach(function(x){rows.push([n('pile entry'),n(d(x.ts)),t(pileName(x.pile)),n(''),n((x.cents/100).toFixed(2)),t(x.note)].join(','));});
+  S.loans.slice().sort(function(a,b){return a.ts-b.ts;}).forEach(function(l){
+    rows.push([n('loan'),n(d(l.ts)),n(''),t(l.person),n((l.cents/100).toFixed(2)),t(l.note)].join(','));
+    (l.repayments||[]).forEach(function(r){rows.push([n('repayment'),n(d(r.ts)),n(''),t(l.person),n((r.cents/100).toFixed(2)),n('')].join(','));});
+  });
+  return rows.join('\n');
+}
+function sheetExport(){
+  S.cur={type:'export'};
+  openSheet('<h2>Export history</h2><p class="hint">Save it as a file or copy the text into a spreadsheet.</p>'+
+    '<label for="xText">History (CSV)</label><textarea id="xText" readonly></textarea><p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Close</button><button class="btn ghost" data-a="copyCsv">Copy</button>'+(S.dl?'<button class="btn add" data-a="saveCsv">Save file</button>':'')+'</div>');
+  $('xText').value=csvText();
+}
+
+/* ---------- events ---------- */
+document.addEventListener('click',async function(e){
+  var b=e.target.closest('[data-a]');if(!b)return;
+  var a=b.dataset.a,id=b.dataset.id;
+  if(a==='tab'){S.tab=b.dataset.tab;render();window.scrollTo(0,0);}
+  else if(a==='filter'){S.filter=b.dataset.f;S.histLimit=50;render();}
+  else if(a==='more'){S.histLimit+=50;render();}
+  else if(a==='toggleSettled'){S.showSettled=!S.showSettled;render();}
+  else if(a==='move')sheetMove(id,parseInt(b.dataset.dir,10));
+  else if(a==='saveMove')saveMove();
+  else if(a==='newPile')sheetPile(null);
+  else if(a==='editPile')sheetPile(id);
+  else if(a==='savePile')savePile();
+  else if(a==='removePile')removePile();
+  else if(a==='lend')sheetLend();
+  else if(a==='saveLend')saveLend();
+  else if(a==='repay')sheetRepay(id);
+  else if(a==='saveRepay')saveRepay();
+  else if(a==='closeSheet')closeSheet();
+  else if(a==='confirmYes'){var fn=S.confirmFn;if(fn)await save(fn);}
+  else if(a==='delTx'){
+    var t=S.tx.filter(function(x){return x.id===id;})[0];if(!t)return;
+    confirmSheet('Delete this entry?',(t.cents>0?'Adds ':'Takes ')+fmtE(Math.abs(t.cents))+(t.cents>0?' out of ':' back into ')+pileName(t.pile)+'. This cannot be undone.','Delete',function(){return S.txRef.doc(id).delete();});
+  }
+  else if(a==='delLoan'){
+    var l=loan(id);if(!l)return;
+    confirmSheet('Delete loan to '+l.person+'?','The loan and its repayments are removed, and the matching pile entries are removed too, so pile balances go back to how they were before this loan.','Delete loan',async function(){
+      var linked=S.tx.filter(function(x){return x.loanId===id;});
+      for(var i=0;i<linked.length;i++)await S.txRef.doc(linked[i].id).delete();
+      await S.loanRef.doc(id).delete();
+    });
+  }
+  else if(a==='delRep'){
+    var rid=b.dataset.rid,l2=loan(id);if(!l2)return;
+    confirmSheet('Remove this repayment?','The amount is owed again, and the matching pile entry is removed.','Remove',async function(){
+      await S.loanRef.doc(id).update({repayments:(l2.repayments||[]).filter(function(r){return r.id!==rid;})});
+      var linked=S.tx.filter(function(x){return x.repId===rid;});
+      for(var i=0;i<linked.length;i++)await S.txRef.doc(linked[i].id).delete();
+    });
+  }
+  else if(a==='resetRate')setRate(DEFAULT_RATE);
+  else if(a==='export')sheetExport();
+  else if(a==='copyCsv'){
+    var ta=$('xText');
+    try{await navigator.clipboard.writeText(ta.value);toast('Copied');}
+    catch(x){ta.focus();ta.select();err('Select the text and copy it.');}
+  }
+  else if(a==='saveCsv'){
+    var name='stash-history-'+localInput().slice(0,10)+'.csv';
+    try{await S.dl.save({filename:name,data:csvText()});toast('Saved');}
+    catch(x){if(!x||x.code!=='declined')err('Could not save the file. Use Copy instead.');}
+  }
+});
+document.addEventListener('input',function(e){
+  var id=e.target.id,n;
+  if(id==='cEur'||id==='cMkd'){
+    S.conv={side:id==='cEur'?'eur':'mkd',val:e.target.value};
+    var o=convOther();(id==='cEur'?$('cMkd'):$('cEur')).value=o;
+  }
+  else if(id==='fAmt'||id==='lAmt'||id==='rAmt'){
+    var c=readCents(id),t=$(id==='fAmt'?'fMkd':id==='lAmt'?'lMkd':'rMkd');
+    if(t)t.innerHTML=c?fmtM(c):'&nbsp;';
+  }
+});
+document.addEventListener('keydown',function(e){
+  if(e.key==='Enter'&&e.target.closest&&e.target.closest('#sheet')&&e.target.tagName!=='TEXTAREA'){
+    var p=document.querySelector('#sheet [data-primary]');if(p&&!p.disabled){e.preventDefault();p.click();}
+  }
+  if(e.key==='Escape'&&!$('sheet').hidden)closeSheet();
+});
+async function setRate(r){
+  var old=S.rate;
+  try{await saveMeta({rate:r});S.rate=r;toast('Rate saved');}
+  catch(x){S.rate=old;toast('Could not save the rate');}
+  render();
+}
+document.addEventListener('change',function(e){
+  if(e.target.id!=='cRate')return;
+  var n=parseNum(e.target.value);
+  if(!n||n<=0||n>1000){toast('Enter a rate above 0');e.target.value=S.rate;return;}
+  setRate(Math.round(n*10000)/10000);
+});
+
+/* ---------- on-phone storage ---------- */
+function localDb(){
+  var KEY='stash.v1',docs={},listeners=[];
+  function load(){try{var r=localStorage.getItem(KEY);docs=r?(JSON.parse(r)||{}):{};}catch(e){docs={};}}
+  function persist(){localStorage.setItem(KEY,JSON.stringify(docs));}
+  function clone(o){return JSON.parse(JSON.stringify(o));}
+  function rnd(){return Math.random().toString(36).slice(2,10)+Date.now().toString(36);}
+  function snapDoc(p){var d=docs[p];return{id:p.split('/').pop(),exists:d!==undefined,data:function(){return d===undefined?undefined:clone(d);}};}
+  function notify(){listeners.slice().forEach(function(f){f();});}
+  function commit(path,next){
+    var prev=docs[path];
+    if(next===undefined)delete docs[path];else docs[path]=next;
+    try{persist();}catch(e){if(prev===undefined)delete docs[path];else docs[path]=prev;throw e;}
+    notify();
+  }
+  function docRef(path){return{
+    id:path.split('/').pop(),path:path,
+    set:async function(d){commit(path,clone(d));},
+    update:async function(d){if(docs[path]===undefined)throw new Error('missing');commit(path,Object.assign({},docs[path],clone(d)));},
+    delete:async function(){commit(path,undefined);},
+    onSnapshot:function(next){var f=function(){next(snapDoc(path));};listeners.push(f);setTimeout(f,0);},
+    collection:function(p){return colRef(path+'/'+p);}
+  };}
+  function colRef(path){var depth=path.split('/').length;return{
+    path:path,
+    doc:function(id){return docRef(path+'/'+(id||rnd()));},
+    add:async function(d){var r=this.doc();await r.set(d);return r;},
+    onSnapshot:function(next){var f=function(){var list=Object.keys(docs).filter(function(k){return k.indexOf(path+'/')===0&&k.split('/').length===depth+1;}).map(snapDoc);next({docs:list,size:list.length});};listeners.push(f);setTimeout(f,0);}
+  };}
+  window.addEventListener('storage',function(e){if(e.key===KEY){load();notify();}});
+  load();
+  return{doc:docRef,collection:colRef};
+}
+
+async function saveFile(opts){
+  var blob=new Blob([opts.data],{type:'text/csv'});
+  var file=null;try{file=new File([blob],opts.filename,{type:'text/csv'});}catch(e){}
+  if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
+    try{await navigator.share({files:[file],title:opts.filename});return;}
+    catch(e){if(e&&e.name==='AbortError')throw {code:'declined'};}
+  }
+  var a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download=opts.filename;
+  document.body.appendChild(a);a.click();a.remove();
+  setTimeout(function(){URL.revokeObjectURL(a.href);},4000);
+}
+
+/* ---------- start ---------- */
+async function init(){
+  render();
+  try{
+    localStorage.setItem('stash.test','1');localStorage.removeItem('stash.test');
+    if(navigator.storage&&navigator.storage.persist){try{navigator.storage.persist();}catch(e){}}
+    var db=localDb();
+    S.dl={save:saveFile};
+    S.appRef=db.doc('app');
+    S.txRef=S.appRef.collection('tx');
+    S.loanRef=S.appRef.collection('loans');
+    S.appRef.onSnapshot(function(snap){
+      S.got.meta=true;S.metaExists=snap.exists;
+      if(snap.exists){var d=snap.data();if(Array.isArray(d.piles)&&d.piles.length)S.piles=d.piles;if(typeof d.rate==='number'&&d.rate>0)S.rate=d.rate;}
+      render();
+    });
+    S.txRef.onSnapshot(function(snap){
+      S.got.tx=true;S.tx=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+      render();
+    });
+    S.loanRef.onSnapshot(function(snap){
+      S.got.loans=true;S.loans=snap.docs.map(function(d){return Object.assign({id:d.id},d.data());});
+      render();
+    });
+    if('serviceWorker' in navigator&&location.protocol==='https:'){navigator.serviceWorker.register('sw.js').catch(function(){});}
+  }catch(x){S.unavailable=true;render();}
+}
+init();
+})();
+</script>
+</body>
+</html>
