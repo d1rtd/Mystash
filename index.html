@@ -123,6 +123,7 @@ textarea{width:100%;min-height:150px;background:var(--bg);color:var(--ink);borde
 </nav>
 <div id="sheet" hidden></div>
 <div id="toast" role="status" aria-live="polite"></div>
+<input type="file" id="restoreFile" accept=".json,application/json,text/plain" hidden>
 
 <script>
 (function(){
@@ -246,6 +247,22 @@ function viewOwed(){
   return h;
 }
 
+function lastBackupMs(){try{return parseInt(localStorage.getItem('stash.lastBackup')||'0',10)||0;}catch(e){return 0;}}
+function lastBackupText(){var t=lastBackupMs();return t?('Last backup: '+fmtDate(t)+'. Back up after adding or changing anything important.'):'No backup yet. Your data lives only on this phone, so save a backup file somewhere safe.';}
+function backupJson(){return JSON.stringify({app:'my-stash',version:1,exportedAt:Date.now(),data:S.db.dump()});}
+function parseBackup(text){
+  var o;try{o=JSON.parse(text);}catch(e){return null;}
+  if(!o||o.app!=='my-stash'||!o.data||typeof o.data!=='object'||!o.data.app||!Array.isArray(o.data.app.piles))return null;
+  var keys=Object.keys(o.data);
+  for(var i=0;i<keys.length;i++){
+    var k=keys[i],d=o.data[k];
+    if(k==='app')continue;
+    if(k.indexOf('app/tx/')===0){if(!d||typeof d.cents!=='number'||typeof d.ts!=='number'||typeof d.pile!=='string')return null;}
+    else if(k.indexOf('app/loans/')===0){if(!d||typeof d.cents!=='number'||typeof d.person!=='string'||!Array.isArray(d.repayments))return null;}
+    else return null;
+  }
+  return o;
+}
 function convOther(){
   var n=parseNum(S.conv.val);
   if(n==null)return '';
@@ -260,8 +277,11 @@ function viewConvert(){
     '<label for="cRate">Rate: denars for 1 euro</label><div class="field"><span>ден</span><input id="cRate" inputmode="decimal" autocomplete="off" value="'+esc(S.rate)+'"></div>'+
     '<button class="link" data-a="resetRate">Reset to '+DEFAULT_RATE.toFixed(2)+'</button>'+
     '<p class="hint">Every ≈ ден amount in the app uses this rate. Change it whenever the rate moves.</p></section>'+
-    '<section class="card" style="margin-top:12px"><h2>Export</h2><p class="hint">Get all pile entries, loans and repayments as a spreadsheet file.</p>'+
-    '<button class="btn ghost wide" style="margin-top:12px" data-a="export">Export history</button></section>';
+    '<section class="card" style="margin-top:12px"><h2>Backup</h2>'+
+    '<p class="hint">'+lastBackupText()+'</p>'+
+    '<button class="btn add wide" style="margin-top:12px" data-a="backup">Back up data</button>'+
+    '<button class="btn ghost wide" style="margin-top:10px" data-a="restore">Restore from backup</button>'+
+    '<button class="btn ghost wide" style="margin-top:10px" data-a="export">Export history as spreadsheet</button></section>';
 }
 
 function render(){
@@ -411,6 +431,16 @@ function sheetExport(){
   $('xText').value=csvText();
 }
 
+function sheetBackup(){
+  S.cur={type:'backup'};
+  openSheet('<h2>Back up data</h2><p class="hint">Save the file to Files or iCloud Drive, or send it to yourself. Keep it somewhere that is not this phone.</p>'+
+    '<label for="xText">Backup text</label><textarea id="xText" readonly></textarea><p id="sErr" class="err" role="alert"></p>'+
+    '<div class="btns"><button class="btn ghost" data-a="closeSheet">Close</button><button class="btn ghost" data-a="copyCsv">Copy</button><button class="btn add" data-a="saveBackup">Save file</button></div>');
+  $('xText').value=backupJson();
+}
+function startRestore(){var f=$('restoreFile');f.value='';f.click();}
+function readFileText(file){return new Promise(function(res,rej){var r=new FileReader();r.onload=function(){res(String(r.result));};r.onerror=function(){rej(r.error);};r.readAsText(file);});}
+
 /* ---------- events ---------- */
 document.addEventListener('click',async function(e){
   var b=e.target.closest('[data-a]');if(!b)return;
@@ -433,7 +463,7 @@ document.addEventListener('click',async function(e){
   else if(a==='confirmYes'){var fn=S.confirmFn;if(fn)await save(fn);}
   else if(a==='delTx'){
     var t=S.tx.filter(function(x){return x.id===id;})[0];if(!t)return;
-    confirmSheet('Delete this entry?',(t.cents>0?'Adds ':'Takes ')+fmtE(Math.abs(t.cents))+(t.cents>0?' out of ':' back into ')+pileName(t.pile)+'. This cannot be undone.','Delete',function(){return S.txRef.doc(id).delete();});
+    confirmSheet('Delete this entry?',(t.cents>0?'Takes ':'Puts ')+fmtE(Math.abs(t.cents))+(t.cents>0?' out of ':' back into ')+pileName(t.pile)+'.'+((bal(t.pile)-t.cents<0)?' That leaves '+pileName(t.pile)+' below zero ('+fmtE(bal(t.pile)-t.cents)+').':'')+' This cannot be undone.','Delete',function(){return S.txRef.doc(id).delete();});
   }
   else if(a==='delLoan'){
     var l=loan(id);if(!l)return;
@@ -453,10 +483,17 @@ document.addEventListener('click',async function(e){
   }
   else if(a==='resetRate')setRate(DEFAULT_RATE);
   else if(a==='export')sheetExport();
+  else if(a==='backup')sheetBackup();
+  else if(a==='restore')startRestore();
   else if(a==='copyCsv'){
     var ta=$('xText');
     try{await navigator.clipboard.writeText(ta.value);toast('Copied');}
     catch(x){ta.focus();ta.select();err('Select the text and copy it.');}
+  }
+  else if(a==='saveBackup'){
+    var bname='my-stash-backup-'+localInput().slice(0,10)+'.json';
+    try{await S.dl.save({filename:bname,data:backupJson()});try{localStorage.setItem('stash.lastBackup',String(Date.now()));}catch(z){}toast('Backup saved');render();}
+    catch(x){if(!x||x.code!=='declined')err('Could not save the file. Use Copy instead.');}
   }
   else if(a==='saveCsv'){
     var name='stash-history-'+localInput().slice(0,10)+'.csv';
@@ -474,6 +511,17 @@ document.addEventListener('input',function(e){
     var c=readCents(id),t=$(id==='fAmt'?'fMkd':id==='lAmt'?'lMkd':'rMkd');
     if(t)t.innerHTML=c?fmtM(c):'&nbsp;';
   }
+});
+document.addEventListener('change',async function(e){
+  if(e.target.id!=='restoreFile')return;
+  var f=e.target.files&&e.target.files[0];if(!f)return;
+  var text;try{text=await readFileText(f);}catch(x){toast('Could not read that file');return;}
+  var o=parseBackup(text);
+  if(!o){openSheet('<h2>Not a backup file</h2><p class="hint" style="font-size:15px;margin-top:10px">That file is not a My Stash backup, so nothing was changed.</p><div class="btns"><button class="btn ghost" data-a="closeSheet">Close</button></div>');return;}
+  var keys=Object.keys(o.data),nTx=keys.filter(function(k){return k.indexOf('app/tx/')===0;}).length,nLoans=keys.filter(function(k){return k.indexOf('app/loans/')===0;}).length;
+  confirmSheet('Restore this backup?','Backup from '+fmtDate(o.exportedAt||Date.now())+': '+o.data.app.piles.length+' piles, '+nTx+' entries, '+nLoans+' loans. It replaces everything now on this phone.','Replace everything',async function(){
+    S.db.replaceAll(o.data);S.filter='all';S.histLimit=50;
+  });
 });
 document.addEventListener('keydown',function(e){
   if(e.key==='Enter'&&e.target.closest&&e.target.closest('#sheet')&&e.target.tagName!=='TEXTAREA'){
@@ -523,14 +571,17 @@ function localDb(){
     add:async function(d){var r=this.doc();await r.set(d);return r;},
     onSnapshot:function(next){var f=function(){var list=Object.keys(docs).filter(function(k){return k.indexOf(path+'/')===0&&k.split('/').length===depth+1;}).map(snapDoc);next({docs:list,size:list.length});};listeners.push(f);setTimeout(f,0);}
   };}
+  function dump(){return clone(docs);}
+  function replaceAll(obj){var prev=docs;docs=clone(obj);try{persist();}catch(e){docs=prev;throw e;}notify();}
   window.addEventListener('storage',function(e){if(e.key===KEY){load();notify();}});
   load();
-  return{doc:docRef,collection:colRef};
+  return{doc:docRef,collection:colRef,dump:dump,replaceAll:replaceAll};
 }
 
 async function saveFile(opts){
-  var blob=new Blob([opts.data],{type:'text/csv'});
-  var file=null;try{file=new File([blob],opts.filename,{type:'text/csv'});}catch(e){}
+  var mime=/\.json$/.test(opts.filename)?'application/json':'text/csv';
+  var blob=new Blob([opts.data],{type:mime});
+  var file=null;try{file=new File([blob],opts.filename,{type:mime});}catch(e){}
   if(file&&navigator.canShare&&navigator.canShare({files:[file]})){
     try{await navigator.share({files:[file],title:opts.filename});return;}
     catch(e){if(e&&e.name==='AbortError')throw {code:'declined'};}
@@ -547,6 +598,7 @@ async function init(){
     localStorage.setItem('stash.test','1');localStorage.removeItem('stash.test');
     if(navigator.storage&&navigator.storage.persist){try{navigator.storage.persist();}catch(e){}}
     var db=localDb();
+    S.db=db;
     S.dl={save:saveFile};
     S.appRef=db.doc('app');
     S.txRef=S.appRef.collection('tx');
